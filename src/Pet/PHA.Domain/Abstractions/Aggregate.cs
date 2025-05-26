@@ -1,6 +1,6 @@
 ﻿namespace PHA.Domain.Abstractions;
 
-public abstract class Aggregate : Entity<Guid>, IAggregate
+public abstract class Aggregate<T> : Entity<T>, IAggregate
 {
     private readonly List<IDomainEvent> _domainEvents = [];
     
