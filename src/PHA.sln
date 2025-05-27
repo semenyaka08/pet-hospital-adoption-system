@@ -5,11 +5,11 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PHA.Hospital", "PHA.Hospital", "{A9592B86-0A13-44C5-91BF-4CB047ED2BD5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PHA.Pet", "PHA.Pet", "{89BBDAFC-1ACB-49B6-8134-5D44B6D188BF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PHA.PetShelter", "PHA.PetShelter", "{89BBDAFC-1ACB-49B6-8134-5D44B6D188BF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PHA.Adoption", "PHA.Adoption", "{D4CADB02-1DDF-4849-942F-EE29E5A1A14F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pet.Domain", "Pet\Pet.Domain\Pet.Domain.csproj", "{2142EB29-14BB-4760-8E3B-6F76E718E84B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShelter.Domain", "Pet\PetShelter.Domain\PetShelter.Domain.csproj", "{2142EB29-14BB-4760-8E3B-6F76E718E84B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{88FB874B-06A1-4DC0-8E09-4A38F5D8F3A8}"
 EndProject
@@ -17,9 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Common", "Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.RabbitMq", "BuildingBlocks\BuildingBlocks.RabbitMq\BuildingBlocks.RabbitMq.csproj", "{7A1A3E60-4A9D-4266-8B61-C8D75FA14DC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pet.Application", "Pet\Pet.Application\Pet.Application.csproj", "{AED2CBCE-87EB-46AA-8020-56D6BC286531}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShelter.Application", "Pet\PetShelter.Application\PetShelter.Application.csproj", "{AED2CBCE-87EB-46AA-8020-56D6BC286531}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pet.Infrastructure", "Pet\Pet.Infrastructure\Pet.Infrastructure.csproj", "{FE494B71-3B3A-4187-9FFA-0E4129BB3A06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShelter.Infrastructure", "Pet\PetShelter.Infrastructure\PetShelter.Infrastructure.csproj", "{FE494B71-3B3A-4187-9FFA-0E4129BB3A06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShelter.API", "PetShelter.API\PetShelter.API.csproj", "{8EB4BF8F-D05C-490A-BD11-CA161DAB5DD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,7 @@ Global
 		{7A1A3E60-4A9D-4266-8B61-C8D75FA14DC8} = {88FB874B-06A1-4DC0-8E09-4A38F5D8F3A8}
 		{AED2CBCE-87EB-46AA-8020-56D6BC286531} = {89BBDAFC-1ACB-49B6-8134-5D44B6D188BF}
 		{FE494B71-3B3A-4187-9FFA-0E4129BB3A06} = {89BBDAFC-1ACB-49B6-8134-5D44B6D188BF}
+		{8EB4BF8F-D05C-490A-BD11-CA161DAB5DD1} = {89BBDAFC-1ACB-49B6-8134-5D44B6D188BF}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2142EB29-14BB-4760-8E3B-6F76E718E84B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -57,5 +60,9 @@ Global
 		{FE494B71-3B3A-4187-9FFA-0E4129BB3A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE494B71-3B3A-4187-9FFA-0E4129BB3A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE494B71-3B3A-4187-9FFA-0E4129BB3A06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EB4BF8F-D05C-490A-BD11-CA161DAB5DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB4BF8F-D05C-490A-BD11-CA161DAB5DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB4BF8F-D05C-490A-BD11-CA161DAB5DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB4BF8F-D05C-490A-BD11-CA161DAB5DD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
