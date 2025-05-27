@@ -1,6 +1,6 @@
 ﻿namespace Pet.Domain.Abstractions;
 
-public interface IAggregate : IEntity
+public interface IAggregate
 {
     IReadOnlyList<IDomainEvent> DomainEvents { get; }
     

@@ -2,7 +2,7 @@
 
 public interface IPetRepository
 {
-    Task<Entities.Pet> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<Entities.Pet?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     
-    Task UpdateAsync(Entities.Pet pet, CancellationToken cancellationToken = default);
+    void Update(Entities.Pet pet, CancellationToken cancellationToken = default);
 }

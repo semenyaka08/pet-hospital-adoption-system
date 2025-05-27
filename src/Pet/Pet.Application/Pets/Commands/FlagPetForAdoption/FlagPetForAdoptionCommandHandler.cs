@@ -1,11 +1,10 @@
 ﻿using BuildingBlocks.Common.CQRS;
 using MediatR;
 using Pet.Domain.Repositories;
-using Pet.Domain.UnitOfWorkPattern;
 
 namespace Pet.Application.Pets.Commands.FlagPetForAdoption;
 
-public class FlagPetForAdoptionCommandHandler(IPetRepository petRepository, IUnitOfPattern pattern) : ICommandHandler<FlagPetForAdoptionCommand>
+public class FlagPetForAdoptionCommandHandler(IPetRepository petRepository, IUnitOfWork unitOfWork) : ICommandHandler<FlagPetForAdoptionCommand>
 {
     public async Task Handle(FlagPetForAdoptionCommand request, CancellationToken cancellationToken)
     {
@@ -13,8 +12,8 @@ public class FlagPetForAdoptionCommandHandler(IPetRepository petRepository, IUni
         
         pet.FlagForAdoption();
         
-        await petRepository.UpdateAsync(pet, cancellationToken);
+        petRepository.Update(pet, cancellationToken);
         
-        await pattern.SaveAsync(cancellationToken);
+        await unitOfWork.SaveAsync(cancellationToken);
     }
 }
