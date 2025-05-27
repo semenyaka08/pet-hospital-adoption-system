@@ -8,7 +8,7 @@ public record DateOfBirth : IStrongType<DateTime, DateOfBirth>
     
     private DateOfBirth(DateTime value) => Value = value;
     
-    public DateOfBirth Of(DateTime value)
+    public static DateOfBirth Of(DateTime value)
     {
         ArgumentNullException.ThrowIfNull(value);
         

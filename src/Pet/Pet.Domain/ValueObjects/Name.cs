@@ -6,7 +6,7 @@ public record Name : IStrongType<string, Name>
     
     private Name(string value) => Value = value;
     
-    public Name Of(string value)
+    public static Name Of(string value)
     {
         ArgumentException.ThrowIfNullOrEmpty(value);
         ArgumentException.ThrowIfNullOrWhiteSpace(value);

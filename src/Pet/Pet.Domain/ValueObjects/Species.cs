@@ -6,7 +6,7 @@ public record Species : IStrongType<string, Species>
     
     private Species(string value) => Value = value;
     
-    public Species Of(string value)
+    public static Species Of(string value)
     {
         ArgumentException.ThrowIfNullOrEmpty(value);
         ArgumentException.ThrowIfNullOrWhiteSpace(value);

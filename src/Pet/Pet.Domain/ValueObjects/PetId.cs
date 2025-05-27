@@ -11,7 +11,7 @@ public record PetId : IStrongType<Guid, PetId>
         Value = value;
     }
 
-    public PetId Of(Guid value)
+    public static PetId Of(Guid value)
     {
         ArgumentNullException.ThrowIfNull(value);
         

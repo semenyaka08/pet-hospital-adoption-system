@@ -6,7 +6,7 @@ public record Breed : IStrongType<string, Breed>
     
     private Breed(string value) => Value = value;
     
-    public Breed Of(string value)
+    public static Breed Of(string value)
     {
         ArgumentException.ThrowIfNullOrEmpty(value);
         ArgumentException.ThrowIfNullOrWhiteSpace(value);

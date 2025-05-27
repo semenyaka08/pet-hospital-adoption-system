@@ -4,5 +4,5 @@ public interface IStrongType<T, out TResult>
 {
     public T Value { get;}
     
-    TResult Of(T value);
+    static abstract TResult Of(T value);
 }

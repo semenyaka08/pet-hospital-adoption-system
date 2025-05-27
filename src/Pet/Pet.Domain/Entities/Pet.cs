@@ -21,7 +21,7 @@ public class Pet : Aggregate<PetId>
 
     public DateOfBirth DateOfBirth { get; init; } = default!;
 
-    public int EstimatedAge => (int)((DateTime.UtcNow - DateOfBirth.Value).TotalDays / 365.25);
+    public float EstimatedAge => (float)((DateTime.UtcNow - DateOfBirth.Value).TotalDays / 365.25);
     
     private Pet() { }
 
