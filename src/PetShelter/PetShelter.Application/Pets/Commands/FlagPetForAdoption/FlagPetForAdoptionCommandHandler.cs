@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Common.CQRS;
-using MediatR;
+using BuildingBlocks.Common.Exceptions;
+using PetShelter.Domain.Entities;
 using PetShelter.Domain.Repositories;
 
 namespace PetShelter.Application.Pets.Commands.FlagPetForAdoption;
@@ -9,6 +10,11 @@ public class FlagPetForAdoptionCommandHandler(IPetRepository petRepository, IUni
     public async Task Handle(FlagPetForAdoptionCommand request, CancellationToken cancellationToken)
     {
         var pet = await petRepository.GetByIdAsync(request.PetId, cancellationToken);
+        
+        if(pet is null)
+        {
+            throw new ResourceNotFound(nameof(Pet), request.PetId.ToString());
+        }
         
         pet.FlagForAdoption();
         
