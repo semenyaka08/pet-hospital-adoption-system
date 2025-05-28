@@ -1,16 +1,18 @@
-﻿using PetShelter.Domain.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using PetShelter.Domain.Entities;
+using PetShelter.Domain.Repositories;
 
 namespace PetShelter.Infrastructure.Repositories;
 
-public class PetRepository : IPetRepository
+public class PetRepository(PetDbContext context) : IPetRepository
 {
-    public Task<Domain.Entities.Pet?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public async Task<Pet?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await context.Pets.FirstOrDefaultAsync(z=> z.Id.Value == id, cancellationToken);
     }
 
-    public void Update(Domain.Entities.Pet pet, CancellationToken cancellationToken = default)
+    public void Update(Pet pet, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        context.Pets.Update(pet);
     }
 }

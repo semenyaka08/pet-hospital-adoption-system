@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PetShelter.Domain.Repositories;
+using PetShelter.Infrastructure.DataSeeders;
 using PetShelter.Infrastructure.Interceptors;
 using PetShelter.Infrastructure.Repositories;
 
@@ -18,6 +19,7 @@ public static class ServiceCollectionExtension
         serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
         serviceCollection.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         serviceCollection.AddScoped<ISaveChangesInterceptor, DomainEventDispatcherInterceptor>();
+        serviceCollection.AddScoped<IDataSeeder, DataSeeder>();
         
         serviceCollection.AddDbContext<PetDbContext>((sp, options) =>
         {

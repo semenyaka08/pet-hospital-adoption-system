@@ -12,11 +12,12 @@ public record BusinessState
 
     public DateTime? AdoptedDate { get; set; }
 
-    private BusinessState(Status status, bool isAvailableForAdoption, DateTime rescuedDate)
+    private BusinessState(Status status, bool isAvailableForAdoption, DateTime rescuedDate, DateTime? adoptedDate = null)
     {
         Status = status;
         IsAvailableForAdoption = isAvailableForAdoption;
         RescuedDate = rescuedDate;
+        AdoptedDate = adoptedDate;
     }
     
     public static BusinessState Of(Status status, bool isAvailableForAdoption, DateTime rescuedDate, DateTime? adoptedDate = null)
