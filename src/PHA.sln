@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShelter.Domain", "PetShe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShelter.Infrastructure", "PetShelter\PetShelter.Infrastructure\PetShelter.Infrastructure.csproj", "{F92E849D-FFB8-407D-A463-53C3C4F8E59A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.API", "Hospital\Hospital.API\Hospital.API.csproj", "{1402CD8C-D6C9-4D60-A359-D881C3A6888A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,7 @@ Global
 		{A1D65EAA-B0EE-4ACF-A32E-0EBB99A3F935} = {89BBDAFC-1ACB-49B6-8134-5D44B6D188BF}
 		{047B0F53-BDA1-4C80-A2E2-F2876E697EF9} = {89BBDAFC-1ACB-49B6-8134-5D44B6D188BF}
 		{F92E849D-FFB8-407D-A463-53C3C4F8E59A} = {89BBDAFC-1ACB-49B6-8134-5D44B6D188BF}
+		{1402CD8C-D6C9-4D60-A359-D881C3A6888A} = {A9592B86-0A13-44C5-91BF-4CB047ED2BD5}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DE174693-8006-40AC-A192-B846F9776E28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -64,5 +67,9 @@ Global
 		{F92E849D-FFB8-407D-A463-53C3C4F8E59A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F92E849D-FFB8-407D-A463-53C3C4F8E59A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F92E849D-FFB8-407D-A463-53C3C4F8E59A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1402CD8C-D6C9-4D60-A359-D881C3A6888A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1402CD8C-D6C9-4D60-A359-D881C3A6888A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1402CD8C-D6C9-4D60-A359-D881C3A6888A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1402CD8C-D6C9-4D60-A359-D881C3A6888A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,12 +1,16 @@
-﻿using MediatR;
+﻿using MassTransit;
+using MediatR;
+using PetShelter.Application.Extensions;
 using PetShelter.Domain.DomainEvents;
 
 namespace PetShelter.Application.Pets.EventHandlers;
 
-public class PetTransferredToHospitalEventHandler : INotificationHandler<PetTransferredToHospitalDomainEvent>
+public class PetTransferredToHospitalEventHandler(IPublishEndpoint publishEndpoint) : INotificationHandler<PetTransferredToHospitalDomainEvent>
 {
-    public Task Handle(PetTransferredToHospitalDomainEvent notification, CancellationToken cancellationToken)
+    public async Task Handle(PetTransferredToHospitalDomainEvent notification, CancellationToken cancellationToken)
     {
-        return Task.CompletedTask;
+        var integrationEvent = notification.ToIntegrationEvent();
+        
+        await publishEndpoint.Publish(integrationEvent, cancellationToken);
     }
 }
