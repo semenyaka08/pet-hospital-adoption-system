@@ -25,10 +25,10 @@ public class DomainEventDispatcherInterceptor(IMediator mediator) : SaveChangesI
             .Select(z => z.Entity)
             .ToList();
 
-        var domainEvents = aggregates.SelectMany(z => z.DomainEvents);
+        var domainEvents = aggregates.SelectMany(z => z.DomainEvents).ToList();
         
         aggregates.ForEach(z => z.ClearDomainEvents());
-
+        
         foreach (var domainEvent in domainEvents)
         {
             await mediator.Publish(domainEvent);

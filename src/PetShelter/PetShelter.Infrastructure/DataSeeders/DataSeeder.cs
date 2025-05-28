@@ -14,9 +14,6 @@ public class DataSeeder(PetDbContext context) : IDataSeeder
     
     private async Task SeedPetsAsync()
     {
-        var petId = PetId.Of(Guid.NewGuid());
-        var name = Name.Of("Buddy");
-        
         List<Pet> pets = [
             Pet.Create(PetId.Of(Guid.NewGuid()),
             Name.Of("Buddy"),
@@ -52,7 +49,7 @@ public class DataSeeder(PetDbContext context) : IDataSeeder
                     status: Status.Rescued,
                     isAvailableForAdoption: false,
                     rescuedDate: DateTime.UtcNow.AddMonths(-5),
-                    adoptedDate: DateTime.UtcNow.AddMonths(-1)
+                    adoptedDate: DateTime.UtcNow.AddMonths(-2)
                 ),
                 PhysicalCharacteristics.Of(24.5m, 40.0m, true, true),
                 dateOfBirth: DateOfBirth.Of(new DateTime(2020, 8, 20)))

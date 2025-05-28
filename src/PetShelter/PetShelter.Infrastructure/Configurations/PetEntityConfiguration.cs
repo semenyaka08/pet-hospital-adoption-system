@@ -1,17 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PetShelter.Domain.Entities;
 using PetShelter.Domain.ValueObjects;
 
 namespace PetShelter.Infrastructure.Configurations;
 
-public class PetEntityConfiguration<TPet> : IEntityTypeConfiguration<TPet>
-    where TPet : Domain.Entities.Pet
+public class PetEntityConfiguration : IEntityTypeConfiguration<Pet>
 {
-    public void Configure(EntityTypeBuilder<TPet> builder)
+    public void Configure(EntityTypeBuilder<Pet> builder)
     {
         builder.ToTable("Pets");
         
         builder.HasKey(p => p.Id);
+        
         builder.Property(p => p.Id)
             .HasConversion(
                 petId => petId.Value,

@@ -10,7 +10,7 @@ public class PetDbContext(DbContextOptions<PetDbContext> options) : DbContext(op
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new PetEntityConfiguration<Pet>());
+        modelBuilder.ApplyConfiguration(new PetEntityConfiguration());
         
         base.OnModelCreating(modelBuilder);
     }

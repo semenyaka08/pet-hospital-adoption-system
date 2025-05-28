@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Pets\EventHandlers\" />
       <Folder Include="Pets\Queries\" />
     </ItemGroup>
 

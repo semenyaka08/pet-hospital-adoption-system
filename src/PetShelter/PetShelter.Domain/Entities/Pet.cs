@@ -66,10 +66,10 @@ public class Pet : Aggregate<PetId>
     
     public void TransferToHospital(string reason, string veterinarianNotes = "")
     {
-        if(BusinessState.Status != Status.UnderCare || BusinessState.Status != Status.Rescued)
+        if(BusinessState.Status != Status.UnderCare && BusinessState.Status != Status.Rescued)
             throw new InvalidOperationException("Pet must be under care or rescued to be transferred to hospital");
     
-        BusinessState = BusinessState.Of(Status.InHospital, false, BusinessState.RescuedDate);
+        BusinessState = BusinessState.Of(Status.InHospital, false, BusinessState.RescuedDate, BusinessState.AdoptedDate);
         
         AddDomainEvent(new PetTransferredToHospitalDomainEvent(
             Id.Value, 

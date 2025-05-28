@@ -36,6 +36,6 @@ public record BusinessState
             throw new ArgumentException("Adopted date cannot be in the future or before the rescued date.");
         }
         
-        return new BusinessState(status, isAvailableForAdoption, rescuedDate);
+        return new BusinessState(status, isAvailableForAdoption, rescuedDate, adoptedDate);
     }
 }
