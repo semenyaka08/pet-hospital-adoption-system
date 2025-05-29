@@ -1,3 +1,5 @@
+using Hospital.API.Data;
+using Hospital.API.Data.EmailServices;
 using Hospital.API.DataSeeders;
 using Hospital.API.EventHandlers.ConsumingEvents;
 using Hospital.API.Infrastructure;
@@ -22,6 +24,10 @@ builder.Services.AddMassTransit(config =>
         configurator.ConfigureEndpoints(context);
     });
 });
+builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddDbContext<HospitalDbContext>(z=>
     z.UseSqlServer(builder.Configuration.GetConnectionString("HospitalDB")));
@@ -36,6 +42,12 @@ await dbContext.Database.MigrateAsync();
 var dataSeeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
 await dataSeeder.Seed();
 
-app.MapGet("/", () => "Hello World!");
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.MapControllers();
 
 app.Run();
