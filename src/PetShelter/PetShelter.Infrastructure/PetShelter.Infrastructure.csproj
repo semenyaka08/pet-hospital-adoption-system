@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\BuildingBlocks\BuildingBlocks.RabbitMq\BuildingBlocks.RabbitMq.csproj" />
       <ProjectReference Include="..\PetShelter.Domain\PetShelter.Domain.csproj" />
     </ItemGroup>
 

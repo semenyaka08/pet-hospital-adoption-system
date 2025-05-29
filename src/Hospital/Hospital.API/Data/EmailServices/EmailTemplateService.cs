@@ -26,7 +26,7 @@ public static class EmailTemplateService
                 <table cellpadding='0' cellspacing='0' style='margin: 0 auto;'>
                     <tr>
                         <td style='background-color: #28a745; border-radius: 6px;'>
-                            <a href='http://localhost:5028/api/treatments/start?petId={5}&doctorEmail={6}' 
+                            <a href='http://localhost:5028/api/medicalrecords/start?petId={5}&doctorEmail={6}' 
                                style='color: #ffffff; text-decoration: none; padding: 15px 30px; display: block; font-weight: bold; font-size: 16px;'>
                                 🏥 Start Treatment
                             </a>

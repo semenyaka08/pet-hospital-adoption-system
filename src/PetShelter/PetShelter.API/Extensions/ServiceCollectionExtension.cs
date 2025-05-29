@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using PetShelter.Infrastructure.EventConsumers;
 
 namespace PetShelter.API.Extensions;
 
@@ -13,6 +14,8 @@ public static class ServiceCollectionExtension
         {
             config.SetKebabCaseEndpointNameFormatter();
 
+            config.AddConsumer<PetTransferredToShelterEventConsumer>();
+            
             config.UsingRabbitMq((context, configurator) =>
             {
                 configurator.Host(new Uri(configuration["MessageBroker:Host"]!), host =>

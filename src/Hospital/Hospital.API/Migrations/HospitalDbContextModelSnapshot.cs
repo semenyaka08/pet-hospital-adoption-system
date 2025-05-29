@@ -65,7 +65,7 @@ namespace Hospital.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("TreatmentStarted")
+                    b.Property<bool>("TreatmentIsOngoing")
                         .HasColumnType("bit");
 
                     b.Property<string>("VeterinarianNotes")

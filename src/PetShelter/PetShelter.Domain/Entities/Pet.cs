@@ -79,4 +79,12 @@ public class Pet : Aggregate<PetId>
             veterinarianNotes)
         );
     }
+    
+    public void TransferToShelterFromHospital()
+    {
+        if (BusinessState.Status != Status.InHospital)
+            throw new InvalidOperationException("Pet must be in hospital to be transferred to shelter");
+        
+        BusinessState = BusinessState.Of(Status.UnderCare, true, BusinessState.RescuedDate, BusinessState.AdoptedDate);
+    }
 }

@@ -17,8 +17,8 @@ public class DataSeeder(HospitalDbContext context) : IDataSeeder
             var doctor1 = new Doctor
             {
                 Id = Guid.NewGuid(),
-                FirstName = "Serhii",
-                Email = "Serh.semka@gmail.com",
+                FirstName = "Danya Minezeri",
+                Email = "minezeri034@gmail.com",
             };
 
             var doctor2 = new Doctor

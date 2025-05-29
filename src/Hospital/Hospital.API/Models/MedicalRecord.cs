@@ -14,7 +14,7 @@ public class MedicalRecord
     
     public string VeterinarianNotes { get; set; } = string.Empty;
 
-    public bool TreatmentStarted { get; set; }
+    public bool TreatmentIsOngoing { get; set; }
     
     public Guid? DoctorId { get; set; }
     
