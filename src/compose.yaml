@@ -1,0 +1,77 @@
+﻿services:
+  petshelter.api:
+    image: petshelter.api
+    build:
+      context: .
+      dockerfile: PetShelter/PetShelter.API/Dockerfile
+    ports:
+      - "6245:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: 8080
+      ConnectionStrings__PetDb: Server = petsDb;Database = PetsDb;User Id=sa;Password=Serhiy0808;Encrypt=True;TrustServerCertificate=true
+      MessageBroker__Host: amqp://pha-mq:5672
+      MessageBroker__UserName: guest
+      MessageBroker__Password: guest
+    depends_on:
+      petsDb:
+        condition: service_started
+      messageBroker:
+        condition: service_healthy
+        
+  petsDb:
+    image: mcr.microsoft.com/mssql/server
+    container_name: petsDb
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Serhiy0808
+    ports:
+      - "1433:1433"
+  
+  messageBroker:
+    image: rabbitmq:management
+    container_name: messageBroker
+    hostname: pha-mq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    restart: always
+    ports:
+      - "5675:5672"
+      - "15705:15672"
+    healthcheck:
+      test: [ "CMD", "rabbitmq-diagnostics", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  hospital.api:
+    image: hospital.api
+    build:
+      context: .
+      dockerfile: Hospital/Hospital.API/Dockerfile
+    ports:
+      - "6252:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: 8080
+      ConnectionStrings__HospitalDb: Server = hospitalDb;Database = HospitalDb;User Id=sa;Password=Serhiy0808;Encrypt=True;TrustServerCertificate=true
+      MessageBroker__Host: amqp://pha-mq:5672
+      MessageBroker__UserName: guest
+      MessageBroker__Password: guest
+    depends_on:
+      hospitalDb:
+        condition: service_started
+      messageBroker:
+        condition: service_healthy
+  
+  hospitalDb:
+    image: mcr.microsoft.com/mssql/server
+    container_name: hospitalDb
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Serhiy0808
+    ports:
+      - "1434:1433"
