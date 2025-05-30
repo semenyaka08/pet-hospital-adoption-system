@@ -1,11 +1,24 @@
 ﻿using Adoption.API.Repositories;
+using PetShelter.Grpc;
 
 namespace Adoption.API.Services;
 
-public class ReservationService(IReservationRepository repository) : IReservationService
+public class ReservationService(IReservationRepository repository, PetService.PetServiceClient petServiceClient) : IReservationService
 {
     public async Task<ReserveData> ReserveAsync(Guid petId, string userPhone)
     {
+        var pet = await petServiceClient.GetPetByIdAsync(new GetPetByIdRequest { PetId = petId.ToString() });
+
+        if(string.IsNullOrWhiteSpace(pet.PetId))
+        {
+            throw new InvalidOperationException("this pet does not exist");
+        }
+        
+        if (!pet.IsAvailableForAdoption)
+        {
+            throw new InvalidOperationException("this pet is not available for reservation");
+        }
+        
         var reservationResult = await repository.ReserveAsync(petId.ToString(), userPhone);
         
         if (!reservationResult)

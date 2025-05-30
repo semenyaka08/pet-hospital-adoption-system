@@ -75,3 +75,37 @@
       - SA_PASSWORD=Serhiy0808
     ports:
       - "1434:1433"
+  
+  redis:
+    image: redis:7-alpine
+    container_name: redis-db
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+  
+  adoption.api:
+    image: adoption.api
+    build:
+      context: .
+      dockerfile: Adoption/Adoption.API/Dockerfile
+    ports:
+      - "6245:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: 8080
+      ConnectionStrings__Redis: redis-db:6379
+      GrpcSettings__PetsUrl: petshelter.api:6245
+      MessageBroker__Host: amqp://pha-mq:5672
+      MessageBroker__UserName: guest
+      MessageBroker__Password: guest
+    depends_on:
+      petsDb:
+        condition: service_started
+      messageBroker:
+        condition: service_healthy

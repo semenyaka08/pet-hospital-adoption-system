@@ -19,12 +19,12 @@ public class PetServiceGrpc(IPetRepository petRepository) : PetService.PetServic
         {
             throw new RpcException(new Status(StatusCode.NotFound, $"Pet with ID {petId} not found."));
         }
-
+        
         return new GetPetByIdResponse
         {
             PetId = pet.Id.Value.ToString(),
             Name = pet.Name.Value,
-            Status = pet.BusinessState.Status.ToString()
+            IsAvailableForAdoption = pet.BusinessState.IsAvailableForAdoption
         };
     }
 }

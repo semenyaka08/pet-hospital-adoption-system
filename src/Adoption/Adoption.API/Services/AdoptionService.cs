@@ -44,7 +44,7 @@ public class AdoptionService(IReservationService reservationService, PetService.
     {
         var pet = await petServiceClient.GetPetByIdAsync(new GetPetByIdRequest { PetId = petId.ToString() });
 
-        if (pet.Status != "Available")
+        if (!pet.IsAvailableForAdoption)
         {
             throw new InvalidOperationException("This pet is not available for adoption.");
         }

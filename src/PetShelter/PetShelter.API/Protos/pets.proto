@@ -15,5 +15,5 @@ message GetPetByIdRequest {
 message GetPetByIdResponse {
   string pet_id = 1;
   string name = 2;
-  string status = 3;
+  bool isAvailableForAdoption = 3;
 }
