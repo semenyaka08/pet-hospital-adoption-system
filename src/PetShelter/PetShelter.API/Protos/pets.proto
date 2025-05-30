@@ -1,0 +1,19 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "PetShelter.Grpc";
+
+package petshelter;
+
+service PetService {
+  rpc GetPetById (GetPetByIdRequest) returns (GetPetByIdResponse);
+}
+
+message GetPetByIdRequest {
+  string pet_id = 1;
+}
+
+message GetPetByIdResponse {
+  string pet_id = 1;
+  string name = 2;
+  string status = 3;
+}

@@ -87,4 +87,9 @@ public class Pet : Aggregate<PetId>
         
         BusinessState = BusinessState.Of(Status.UnderCare, true, BusinessState.RescuedDate, BusinessState.AdoptedDate);
     }
+    
+    public void FlagAsAdopted()
+    {
+        BusinessState = BusinessState.Of(Status.Adopted, false, BusinessState.RescuedDate, DateTime.UtcNow);
+    }
 }

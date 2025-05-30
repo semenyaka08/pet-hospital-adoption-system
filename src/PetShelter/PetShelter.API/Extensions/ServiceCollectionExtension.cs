@@ -26,6 +26,8 @@ public static class ServiceCollectionExtension
                 configurator.ConfigureEndpoints(context);
             });
         });
+
+        services.AddGrpc();
         
         return services;
     }

@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using PetShelter.API.Extensions;
+using PetShelter.API.Services;
 using PetShelter.Application.Extensions;
+using PetShelter.Grpc;
 using PetShelter.Infrastructure;
 using PetShelter.Infrastructure.DataSeeders;
 using PetShelter.Infrastructure.Extensions;
@@ -27,5 +29,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
+app.MapGrpcService<PetServiceGrpc>();
 
 app.Run();
